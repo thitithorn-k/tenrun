@@ -1,0 +1,30 @@
+.date {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.date-each {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    border-radius: 50px;
+    background: var(--blue-color);
+    width: 19%;
+    height: 60px;
+}
+
+@media screen and (max-width: 700px) {
+    .date {
+        display: flex;
+    }
+
+    .date-each {
+        border-radius: 20px;
+        width: 16%;
+    }
+}

@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+:root {
+  --blue-color: rgba(34, 92, 243, 0.95);
+  --dark-blue-color: rgba(34,92,243, 0.95);
+  --orange-color: rgba(255, 102, 36, 0.95);
+  --dark-orange-color: rgba(240, 90, 25, 0.95);
+}
+
+.nav-div {
+  margin-bottom: 60px;
+}
+
+.btn {
+  color: rgb(255, 255, 255);
+  background: var(--orange-color);
+  border: none;
+  border-radius: 50px;
+}
+
+.btn:hover {
+  background: var(--dark-orange-color);
+}
+
+.btn:active {
+  background: var(--orange-color);
+}
