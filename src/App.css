@@ -4,9 +4,10 @@
 
 :root {
   --blue-color: rgba(34, 92, 243, 0.95);
-  --dark-blue-color: rgba(34,92,243, 0.95);
+  --dark-blue-color: rgba(31, 85, 221, 0.95);
   --orange-color: rgba(255, 102, 36, 0.95);
   --dark-orange-color: rgba(240, 90, 25, 0.95);
+  --white-dark-color: rgba(245, 245, 245, 0.95);
 }
 
 .nav-div {

@@ -13,10 +13,10 @@ function HistoryItems(props) {
         return (
             <div className="history-item">
                 <div>
-                    <Logo logo={history.type} class='history-icon' />
+                    <Logo logo={history.history_type} class='history-icon' />
                 </div>
                 <div className="history-item-info">
-                    <div id="history-item-info-name">{history.name}</div><div id="history-item-info-description">{history.description}</div><div id="history-item-info-date">{history.date}</div><div id="history-item-info-duration">{duration_text}</div>
+                    <div id="history-item-info-name">{history.name}</div><div id="history-item-info-description">{history.detail}</div><div id="history-item-info-date">{new Date(history.date).toLocaleDateString()}</div><div id="history-item-info-duration">{duration_text}</div>
                 </div>
             </div>
         );
@@ -24,7 +24,8 @@ function HistoryItems(props) {
 
     return(
         <div className="history-items">
-            {historiesElement}
+            {props.histories.length > 0 && historiesElement}
+            {props.histories.length <= 0 && <div className="no-act-div">You didn't have any activities on this day</div>}
         </div>
     );
 }

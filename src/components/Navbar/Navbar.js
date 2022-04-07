@@ -5,12 +5,14 @@ function Navbar(props) {
     return (
         <div className="navbar">
             <div className="noselect">TenRun</div>
-            <div className="navbar-menu">
+            <div className="navbar-menus noselect">
                 <ul>
-                    <Link to='/'><li className="noselect">Home</li></Link>
-                    <Link to='/add-activity'><li className="noselect">Add Activity</li></Link>
-                    <Link to='#'><li className="noselect">Sign in</li></Link>
-                    <Link to='#'><li className="noselect">Sign up</li></Link>
+                    <Link to='/'><li className='navbar-menus-menu'>Home</li></Link>
+                    {props.isLogin && <Link to='/add-activity'><li className='navbar-menus-menu'>Add Activity</li></Link>}
+                    {props.isLogin && <Link to='/history'><li className='navbar-menus-menu'>History</li></Link>}
+                    {!props.isLogin && <Link to='/login'><li className='navbar-menus-menu'>Log in</li></Link>}
+                    {!props.isLogin && <Link to='/register'><li className='navbar-menus-register'>Register</li></Link>}
+                    {props.isLogin && <Link to='#'><li className='navbar-menus-register' onClick={props.handdleLogout}>Logout</li></Link> }
                 </ul>
             </div>
             <div className="navbar-hamburger">

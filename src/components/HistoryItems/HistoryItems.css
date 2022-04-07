@@ -47,6 +47,10 @@
     display: flex;
 }
 
+.no-act-div {
+    padding: 30px;
+}
+
 @media screen and (max-width: 700px) {
     .history-icon {
         height: 60px;

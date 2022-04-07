@@ -1,11 +1,11 @@
-.register-container {
+.login-container {
     display: flex;
     justify-content: center;
     padding: 50px 0px;
 }
 
-.register-container-blog {
-    width: 500px;
+.login-container-blog {
+    width: 400px;
     border-radius: 50px;
     padding: 25px 50px;
     box-sizing: border-box;
@@ -14,24 +14,24 @@
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-.register-top {
+.login-top {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.register-top h1 {
+.login-top h1 {
     color: var(--blue-color);
 }
 
-.register-form {
+.login-form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 100%;
 }
 
-.register-form-row {
+.login-form-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,15 +39,15 @@
     padding: 2px 0px;
 }
 
-.register-form-left {
+.login-form-left {
     width: auto;
 }
 
-.register-form-right {
-    width: 60%;
+.login-form-right {
+    width: 70%;
 }
 
-.register-form-right input {
+.login-form-right input {
     width: 100%;
     border-width: 0px;
     border-radius: 25px;
@@ -55,7 +55,7 @@
     padding: 8px;
 } 
 
-.register-form-right select {
+.login-form-right select {
     width: 100%;
     border-width: 0px;
     border-radius: 25px;
@@ -63,37 +63,41 @@
     padding: 8px;
 } 
 
-.error-message {
-    text-align: left;
-    color: red;
+.login-btn-div {
+    display: flex;
+    justify-content: space-around;
 }
 
-.success-message {
-    text-align: left;
-    color: green;
-}
-
-.register-btn {
+.login-btn {
     height: 32px;
-    width: 50%;
+    width: 45%;
     margin-top: 16px;
+    cursor: pointer;
+}
+
+.register-btn{
+    cursor: pointer;
+}
+
+.register-btn a{
+    color: white;
 }
 
 
-@media screen and (max-width: 500px) {
-    .register-container {
+@media screen and (max-width: 400px) {
+    .login-container {
         display: flex;
         justify-content: center;
         padding: 20px 0px;
     }
     
-    .register-container-blog {
+    .login-container-blog {
         width: 90%;
         min-width: 300px;
         padding: 25px 30px;
     }
 
-    .register-form-right {
+    .login-form-right {
         width: 50%;
     }
 }
