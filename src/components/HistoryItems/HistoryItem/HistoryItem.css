@@ -1,0 +1,138 @@
+.history-icon {
+    height: 60px;
+    width: 60px;
+    fill: white;
+}
+
+.history-item {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0px;
+    padding: 6px 32px;
+
+    background: var(--blue-color);
+}
+
+.history-item:hover {
+    background: var(--dark-blue-color);
+}
+
+.history-item:active {
+    background: var(--blue-color);
+}
+
+.history-item-info {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    color: rgb(255, 255, 255);
+    width: 100%;
+}
+
+.history-item-info-logo {
+    width: 15%;
+}
+
+#history-item-info-name {
+    width: 20%;
+}
+
+#history-item-info-description {
+    width: 35%;
+}
+
+#history-item-info-date {
+    width: 20%;
+}
+
+#history-item-info-duration {
+    width: 10%;
+}
+
+.history-edit {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--blue-color);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.history-edit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    box-sizing: content-box;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0px 8px;
+}
+
+.history-edit-btn:hover {
+    background-color: var(--white-dark-color);
+}
+
+.edit-icon {
+    width: 60%;
+    height: 60%;
+    fill: var(--blue-color);
+}
+
+@media screen and (max-width: 700px) {
+    .history-icon {
+        height: 60px;
+        width: 60px;
+        fill: var(--blue-color);
+    }
+
+    .history-item {
+        padding: 24px 32px;
+        background: rgb(255, 255, 255);
+        border-radius: 40px;
+    }
+
+    .history-item:hover {
+        background: var(--white-dark-color);
+    }
+    
+    .history-item:active {
+        background: white;
+    }
+
+    .history-item-info {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        color: var(--blue-color);
+    }
+
+    #history-item-info-name {
+        display: flex;
+        font-size: large;
+        color: var(--orange-color);
+    }
+    
+    #history-item-info-description {
+        display: none;
+    }
+    
+    #history-item-info-date {
+        display: none;
+    }
+    
+    #history-item-info-duration {
+        display: flex;
+        font-size: x-large;
+    }
+}

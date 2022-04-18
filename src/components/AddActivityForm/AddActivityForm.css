@@ -13,10 +13,6 @@
     background: var(--orange-color);
 }
 
-.today {
-    background: var(--orange-color) !important;
-}
-
 #add-act-btn {
     display: flex;
     justify-content: center;
@@ -41,8 +37,7 @@
 .activity-details {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    padding-right: 16px;
+    width: 80%;
 }
 
 .activity-detail {
@@ -59,6 +54,14 @@
     padding: 8px;
 }
 
+.activity-detail select {
+    width: 60%;
+    border-width: 0px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
 .activity-detail textarea {
     width: 60%;
     height: 108px;
@@ -67,6 +70,7 @@
     box-sizing: border-box;
     padding: 8px;
     resize: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .activity-detail-submit {
@@ -79,37 +83,17 @@
     height: 35px;
 }
 
-.activity-detail-submit-mobile button {
-    width: 100%;
-    height: 35px;
+.activity-status {
+    text-align: right;
+    margin-bottom: 16px;
 }
 
-.activity-type {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 50%;
-    /* aspect-ratio: 1/1; */
+.activity-status-error {
+    color: red;
 }
 
-.activity-type-row {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
-
-.activity-type-btn {
-    background: var(--blue-color);
-    border: none;
-    border-radius: 50%;
-    padding: 20px;
-    width: 120px;
-    box-sizing: border-box;
-    aspect-ratio: 1/1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.activity-status-success {
+    color: green;
 }
 
 @media screen and (max-width: 700px) {
@@ -128,17 +112,8 @@
         height: 32px;
     }
 
-    .activity-type {
+    .activity-detail-submit button {
         width: 100%;
-        /* justify-content: space-between; */
-    }
-
-    .activity-type-row {
-        justify-content: space-between;
-        padding-bottom: 16px;
-    }
-
-    .activity-type-btn {
-        width: 45%;
+        height: 35px;
     }
 }

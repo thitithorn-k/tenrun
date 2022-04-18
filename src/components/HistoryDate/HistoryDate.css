@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .date-each {
@@ -16,6 +17,48 @@
     background: var(--blue-color);
     width: 19%;
     height: 60px;
+}
+
+.date-each:hover {
+    background-color: var(--orange-color);
+}
+
+.date-selected {
+    background: var(--orange-color) !important;
+}
+
+.datepicker{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border: 0px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.datepicker:active{
+    border: 0px;
+}
+
+.datepicker::-webkit-datetime-edit,
+.datepicker::-webkit-datetime-edit-text,
+.datepicker::-webkit-datetime-edit-year-field,
+.datepicker::-webkit-datetime-edit-month-field,
+.datepicker::-webkit-datetime-edit-day-field {
+    color: transparent;
+    -webkit-appearance: none;
+    display: none;
+}
+
+.datepicker::-webkit-calendar-picker-indicator {
+    color: white;
+    width: 36px;
+    height: 36px;
+    filter: invert(1);
+    cursor: pointer;
 }
 
 @media screen and (max-width: 700px) {

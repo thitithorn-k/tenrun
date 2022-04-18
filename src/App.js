@@ -12,7 +12,7 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 
 //
-import { getHistories } from "./connecter/user";
+import { getActivities, verifyUser } from "./connecter/connecter.js";
 
 import './App.css';
 
@@ -20,55 +20,72 @@ function App() {
 
   const [ isLogin, setIsLogin ] = useState(false);
   const [ id, setId ] = useState();
-  const [ session, setSession ] = useState();
+  const [ token, setToken ] = useState();
+  const [ user, setUser ] = useState('');
 
   const [ isMobile, setIsMobile ] = useState(false);
   const [ screenWidth, setScreenWidth ] = useState(700);
 
-  // example data
-  const [ histories, setHistories ] = useState([]);
+  const [ activities, setActivities ] = useState([]);
+  const [ activitiesCount, setActivitiesCount ] = useState(0);
+  const [ pageNow, setPageNow ] = useState(0);
+  const [ activitiesFilter, setActivitiesFilter ] = useState('');
+
+  const [ activityToUpdate, setActivityToUpdate ] = useState();
 
   const navigate = useNavigate();
 
-  const handdleLogout = () => {
+  const logoutUser = () => {
     setIsLogin(false);
     setId();
-    setSession();
+    setToken();
     jsCookie.remove('id');
-    jsCookie.remove('session');
-    setHistories([]);
+    jsCookie.remove('token');
+    jsCookie.remove('user');
+    setActivities([]);
   }
 
-  const loadHistories = async (page=0) => {
-    const getHistoriesRes =  await getHistories(id, session, page);
-    if(getHistoriesRes.error){
-      setHistories([]);
-    } else {
-      setHistories(getHistoriesRes);
+  const loadActivities = async (page=0) => {
+    if(id && token){
+      if(page < 0) return;
+      const getActivitiesRes =  await getActivities(id, token, page, activitiesFilter);
+      if(getActivitiesRes.error){
+        setActivities([]);
+        if(getActivitiesRes.status === 403){
+          logoutUser();
+        }
+      } else {
+        setActivities(getActivitiesRes.data);
+        setActivitiesCount(getActivitiesRes.count);
+        setPageNow(page);
+      }
     }
-    console.log(getHistoriesRes);
+  }
+
+  const verifyUserData = async () => {
+    if(id && token){
+      const res = await verifyUser(id, token);
+      if(!res){
+        logoutUser();
+      }
+    } else {
+      logoutUser();
+    }
   }
 
   // get login when start
   useEffect(() => {
     const cookieId = jsCookie.get('id');
-    const cookieSession = jsCookie.get('session');
-    if(cookieId && cookieSession){
+    const cookieToken = jsCookie.get('token');
+    const cookieUser = jsCookie.get('user');
+    if(cookieId && cookieToken){
       setIsLogin(true);
       setId(cookieId);
-      setSession(cookieSession);
+      setToken(cookieToken);
+      setUser(cookieUser);
     }
+    // verifyUserData();
   }, []);
-
-  useEffect(() => {
-    if(id && session){
-      jsCookie.set('id', id);
-      jsCookie.set('session', session);
-      setIsLogin(true);
-      loadHistories();
-    }
-    navigate('/', {replace: true});
-  }, [session]);
 
   // handdle resize
   useEffect(() => {
@@ -80,6 +97,17 @@ function App() {
       return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    if(id && token){
+      jsCookie.set('id', id);
+      jsCookie.set('token', token);
+      jsCookie.set('user', user);
+      setIsLogin(true);
+      loadActivities();
+    }
+    navigate('/', {replace: true});
+  }, [token]);
+
   // update screen width
   useEffect(() => {
     if(isMobile && screenWidth > 700){
@@ -89,19 +117,59 @@ function App() {
     }
   }, [screenWidth]);
 
+  useEffect(() => {
+    loadActivities();
+  }, [activitiesFilter])
   
 
   return (
     <div className="App">
       <div className='nav-div'>
-        <Navbar isLogin={isLogin} handdleLogout={handdleLogout}/>
+        <Navbar isLogin={isLogin} handdleLogout={logoutUser}/>
       </div>
         <Routes>
-          <Route path="" element={<Profile />} />
-          <Route path="/add-activity" element={<AddActivity isMobile={isMobile} setHistories={setHistories} />} />
-          <Route path="/history" element={<History isLogin={isLogin} isMobile={isMobile} histories={histories} />} />
-          <Route path="/register" element={<Register isLogin={isLogin}/>} />
-          <Route path="/login" element={<Login isLogin={isLogin} setId={setId} setSession={setSession} />} />
+          <Route path="" element={
+            <Profile 
+              isLogin={isLogin} 
+              loginData={{'id': id, 'token': token, 'user': user}}
+            />
+          } />
+          <Route path="/add-activity" element={
+            <AddActivity 
+              setActivities={setActivities} 
+              loginData={{'id': id, 'token': token}} 
+              loadActivities={loadActivities} 
+              activityToUpdate={activityToUpdate}
+              setActivityToUpdate={setActivityToUpdate}
+            />
+          } />
+          <Route path="/history" element={
+            <History 
+              isLogin={isLogin} 
+              isMobile={isMobile} 
+              activities={activities} 
+              loginData={{'id': id, 'token': token}} 
+              loadActivities={loadActivities} 
+              activityToUpdate={activityToUpdate}
+              setActivityToUpdate={setActivityToUpdate}
+              pageNow={pageNow}
+              activitiesCount={activitiesCount}
+              activitiesFilter={activitiesFilter}
+              setActivitiesFilter={setActivitiesFilter}
+            />
+          } />
+          <Route path="/register" element={
+            <Register isLogin={isLogin}
+            />
+          } />
+          <Route path="/login" element={
+            <Login 
+              isLogin={isLogin} 
+              setId={setId} 
+              setToken={setToken} 
+              setUser={setUser}
+            />
+          } />
         </Routes>
     </div>
   );

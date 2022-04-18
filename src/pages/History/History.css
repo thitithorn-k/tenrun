@@ -39,6 +39,30 @@
     fill:var(--orange-color);
 }
 
+.history-page-controller {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.history-page-controller > * {
+    display: flex;
+}
+
+.history-page-controller > * > * {
+    margin: 0px 4px;
+    min-width: 50px;
+    box-sizing: border-box;
+}
+
+.history-page-controller button {
+    background-color: var(--blue-color);
+    color: white;
+    border: 0px;
+    width: 50px;
+    height: 30px;
+    border-radius: 16px;
+}
 
 
 @media screen and (max-width: 700px) {

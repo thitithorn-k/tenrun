@@ -1,14 +1,14 @@
 import './Login.css';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { login } from '../../connecter/user';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../connecter/connecter.js';
 
 function Login(props) {
 
     const [ formEmail, setFormEmail ] = useState('');
     const [ formPassword, setFormPassword ] = useState('');
     const [ errorMessage, setErrorMessage ] = useState('');
-
+    const navigate = useNavigate();
 
     const handdleChange = (e, formSection) => {
         const value = e.target.value;
@@ -28,12 +28,18 @@ function Login(props) {
         if(data.error){
             setErrorMessage(data.error);
         } else {
-            if(data._id && data.session){
+            if(data._id && data.token){
                 props.setId(data._id);
-                props.setSession(data.session);
+                props.setUser(formEmail.split('@')[0]);
+                props.setToken(data.token);
                 setErrorMessage('');
             }
         }
+    }
+
+    const handdleRegister = (e) => {
+        e.preventDefault();
+        navigate("../register", { replace: true });
     }
 
     return (
@@ -55,7 +61,7 @@ function Login(props) {
                             {errorMessage}
                         </div>
                         <div className='login-btn-div'>
-                            <button className='register-btn btn'><Link to='/register'>Register</Link></button>
+                            <button className='register-btn btn' onClick={handdleRegister}>Register</button>
                             <button type='submit' className='login-btn btn'>Login</button>
                         </div>
                     </form>

@@ -1,6 +1,6 @@
 import './Register.css';
 import { useEffect, useState } from 'react';
-import { register } from '../../connecter/user';
+import { register } from '../../connecter/connecter.js';
 
 function Register(props) {
 
