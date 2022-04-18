@@ -13,6 +13,10 @@
     z-index: 99;
 }
 
+.title {
+    display: unset;
+}
+
 .navbar-menus {
     height: 100%;
 }
@@ -61,4 +65,14 @@ a {
 
 a:visited {
     color: var(--blue-color);
+}
+
+@media screen and (max-width: 420px) {
+    .title {
+        display: none;
+    }
+
+    .navbar {
+        justify-content: flex-end;
+    }
 }

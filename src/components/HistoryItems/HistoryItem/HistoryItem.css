@@ -101,6 +101,7 @@
         padding: 24px 32px;
         background: rgb(255, 255, 255);
         border-radius: 40px;
+        height: 100px;
     }
 
     .history-item:hover {
@@ -112,14 +113,16 @@
     }
 
     .history-item-info {
-        flex-direction: column-reverse;
-        align-items: flex-end;
+        flex-direction: row;
+        justify-content: space-between;
         color: var(--blue-color);
     }
 
     #history-item-info-name {
         display: flex;
         font-size: large;
+        width: 45%;
+        justify-content: center;
         color: var(--orange-color);
     }
     
@@ -134,5 +137,9 @@
     #history-item-info-duration {
         display: flex;
         font-size: x-large;
+    }
+
+    .history-edit {
+        border-radius: 40px;
     }
 }

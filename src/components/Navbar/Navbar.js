@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Navbar(props) {
     return (
         <div className="navbar">
-            <div className="noselect">TenRun</div>
+            <div className="title noselect">TenRun</div>
             <div className="navbar-menus noselect">
                 <ul>
                     <Link to='/'><li className='navbar-menus-menu'>Home</li></Link>
