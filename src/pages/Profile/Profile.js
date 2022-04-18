@@ -92,8 +92,8 @@ function Profile(props) {
                                                     <div>
                                                         <div>Today you spent <span className='highlight'>{durationToString(summaryData.today.duration)}</span> on <span className='highlight'>{summaryData.today.count} {summaryData.today.count > 1? 'activities': 'activity'}</span></div>
                                                         <ul className='profile-activities-list'>
-                                                            {summaryData.today.activities.map((activity) => {
-                                                                return <li>{getActivityName(activity._id)} {activity.count} {activity.count > 1? 'times': 'time'} ({durationToString(activity.duration)})</li>
+                                                            {summaryData.today.activities.map((activity, index) => {
+                                                                return <li key={'today'+index}>{getActivityName(activity._id)} {activity.count} {activity.count > 1? 'times': 'time'} ({durationToString(activity.duration)})</li>
                                                             })}
                                                         </ul>
                                                     </div>
@@ -107,8 +107,8 @@ function Profile(props) {
                                                     <div>
                                                         <div>In last 7 days you spent <span className='highlight'>{durationToString(summaryData.seven.duration)}</span> on <span className='highlight'>{summaryData.seven.count} {summaryData.seven.count > 1? 'activities': 'activity'}</span></div>
                                                         <ul className='profile-activities-list'>
-                                                            {summaryData.seven.activities.map((activity) => {
-                                                                return <li>{getActivityName(activity._id)} {activity.count} {activity.count > 1? 'times': 'time'} ({durationToString(activity.duration)})</li>
+                                                            {summaryData.seven.activities.map((activity, index) => {
+                                                                return <li key={'seven'+index}>{getActivityName(activity._id)} {activity.count} {activity.count > 1? 'times': 'time'} ({durationToString(activity.duration)})</li>
                                                             })}
                                                         </ul>
                                                     </div>
@@ -122,8 +122,8 @@ function Profile(props) {
                                                     <div>
                                                         <div>In this month you spent <span className='highlight'>{durationToString(summaryData.month.duration)}</span> on <span className='highlight'>{summaryData.month.count} {summaryData.month.count > 1? 'activities': 'activity'}</span></div>
                                                         <ul className='profile-activities-list'>
-                                                            {summaryData.month.activities.map((activity) => {
-                                                                return <li>{getActivityName(activity._id)} {activity.count} {activity.count > 1? 'times': 'time'} ({durationToString(activity.duration)})</li>
+                                                            {summaryData.month.activities.map((activity, index) => {
+                                                                return <li key={'month'+index}>{getActivityName(activity._id)} {activity.count} {activity.count > 1? 'times': 'time'} ({durationToString(activity.duration)})</li>
                                                             })}
                                                         </ul>
                                                     </div>
