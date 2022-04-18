@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tenrun/static/css/main.805baf54.css",
-    "main.js": "/tenrun/static/js/main.356bb4ef.js",
+    "main.css": "/tenrun/static/css/main.e993f06e.css",
+    "main.js": "/tenrun/static/js/main.40db3f9b.js",
     "static/js/787.66313f89.chunk.js": "/tenrun/static/js/787.66313f89.chunk.js",
     "index.html": "/tenrun/index.html",
-    "main.805baf54.css.map": "/tenrun/static/css/main.805baf54.css.map",
-    "main.356bb4ef.js.map": "/tenrun/static/js/main.356bb4ef.js.map",
+    "main.e993f06e.css.map": "/tenrun/static/css/main.e993f06e.css.map",
+    "main.40db3f9b.js.map": "/tenrun/static/js/main.40db3f9b.js.map",
     "787.66313f89.chunk.js.map": "/tenrun/static/js/787.66313f89.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.805baf54.css",
-    "static/js/main.356bb4ef.js"
+    "static/css/main.e993f06e.css",
+    "static/js/main.40db3f9b.js"
   ]
 }
