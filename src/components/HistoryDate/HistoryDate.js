@@ -32,24 +32,30 @@ function HistoryDate(props) {
         }
     }, [props.activitiesFilter]);
 
+    const handleClick = (filter, select) => {
+        props.setLoading(true);
+        props.setActivitiesFilter(filter);
+        setSelectedFilter(select);
+    }
+
     return(
         <div className="date">
             <div className="date-each" >
-                <input className='datepicker' type='date' required value={datePicker} onChange={(e) => {props.setActivitiesFilter(new Date(e.target.value)); setSelectedFilter(1);}} />
+                <input className='datepicker' type='date' required value={datePicker} onChange={(e) => { handleClick(new Date(e.target.value), 1)}} />
             </div>
-            <div className='date-each noselect' onClick={() => {props.setActivitiesFilter(day1); setSelectedFilter(1);}}>
+            <div className='date-each noselect' onClick={() => { handleClick(day1, 1)}}>
                 <div>{props.dayToDayName(day1.getUTCDay())}</div>
                 <div>{day1.getUTCDate()}</div>
             </div>
-            <div className={selectedFilter===1?'date-each date-selected noselect':'date-each noselect'} onClick={() => {props.setActivitiesFilter(day2); setSelectedFilter(1);}}>
+            <div className={selectedFilter===1?'date-each date-selected noselect':'date-each noselect'} onClick={() => { handleClick(day2, 1)}}>
                 <div>{props.dayToDayName(day2.getUTCDay())}</div>
                 <div>{day2.getUTCDate()}</div>
             </div>
-            <div className='date-each noselect' onClick={() => {props.setActivitiesFilter(day3); setSelectedFilter(1);}}>
+            <div className='date-each noselect' onClick={() => { handleClick(day3, 1)}}>
                 <div>{props.dayToDayName(day3.getUTCDay())}</div>
                 <div>{day3.getUTCDate()}</div>
             </div>
-            <div className={selectedFilter===0?'date-each date-selected noselect':'date-each noselect'} onClick={() => {props.setActivitiesFilter(''); setSelectedFilter(0);}}><div>All</div></div>
+            <div className={selectedFilter===0?'date-each date-selected noselect':'date-each noselect'} onClick={() => {handleClick('', 0)}}><div>All</div></div>
         </div>
     );
 }

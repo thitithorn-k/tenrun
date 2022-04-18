@@ -7,6 +7,7 @@ import './Profile.css';
 function Profile(props) {
     let loaded = false;
     const [ summaryData, setSummaryData ] = useState();
+    const [ loadingText, setLoadingText ] = useState('Loading.');
 
     const durationToString = (second) => {
         const duration_h = Math.floor(second/60);
@@ -47,10 +48,25 @@ function Profile(props) {
                     activities: getSummaryRes.data.month.sort((a, b) => {return b.duration - a.duration})
                 }
             }
-            console.log(newData);
             setSummaryData(newData);
         }
     }, [props.loginData.token])
+
+    useEffect(() => {
+        let timeup = 20;
+        const loading = setInterval(() => {
+            if(timeup > 0){
+                setLoadingText((prev) => prev.length < 11? prev + '.': 'Loading.');
+                timeup -= 1;
+            } else {
+                setLoadingText('Timeout error. Something went wrong.');
+                clearInterval(loading);
+            }
+        }, 500);
+        return (() => {
+            clearInterval(loading);
+        })
+    }, []);
 
     return (
         <div className="profile-container">
@@ -64,7 +80,7 @@ function Profile(props) {
                                 {
                                     !summaryData?
                                     (
-                                        <div>Can't load summary data</div>
+                                        <div>{loadingText}</div>
                                     ):
                                     (
                                         <div>

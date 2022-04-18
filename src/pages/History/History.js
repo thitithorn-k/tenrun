@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import HistoryItems from "../../components/HistoryItems/HistoryItems";
@@ -6,6 +7,8 @@ import HistoryDate from '../../components/HistoryDate/HistoryDate';
 import './History.css';
 
 function History(props) {
+    
+    const [ loading, setLoading ] = useState(false);
 
     const dayToDayName = (dayNumber) => {
         switch(dayNumber){
@@ -26,6 +29,10 @@ function History(props) {
         }
     }
 
+    useEffect(() => {
+        setLoading(false);
+    }, [props.activities])
+
     return (
         <div className="history-container">
             {   props.isLogin &&
@@ -40,7 +47,16 @@ function History(props) {
                                 </Link>
                             }
                         </div>
-                        <HistoryDate isMobile={props.isMobile} activitiesFilter={props.activitiesFilter} setActivitiesFilter={props.setActivitiesFilter} dayToDayName={dayToDayName}/>
+                        <HistoryDate 
+                            isMobile={props.isMobile} 
+                            activitiesFilter={props.activitiesFilter} 
+                            setActivitiesFilter={props.setActivitiesFilter} 
+                            dayToDayName={dayToDayName}
+                            setLoading={setLoading}
+                        />
+                        { loading?
+                        <div className='no-act-div'>Loading...</div>
+                        :
                         <HistoryItems 
                             activities={props.activities} 
                             loginData={props.loginData} 
@@ -48,13 +64,14 @@ function History(props) {
                             activityToUpdate={props.activityToUpdate}
                             setActivityToUpdate={props.setActivityToUpdate}
                         />
+                        }
                         {
                             props.activitiesCount > 5 &&
                             <div className='history-page-controller'>
                                 <div>
-                                    <div>{props.pageNow > 0 && <button onClick={() => {props.loadActivities(props.pageNow-1)}}>{'<'}</button>}</div>
+                                    <div>{props.pageNow > 0 && <button onClick={() => {props.loadActivities(props.pageNow-1); setLoading(true);}}>{'<'}</button>}</div>
                                     <div>{props.pageNow+1}/{Math.ceil(props.activitiesCount/5)}</div>
-                                    <div>{(props.pageNow+1)*5 < props.activitiesCount && <button onClick={() => {props.loadActivities(props.pageNow+1)}}>{'>'}</button>}</div>
+                                    <div>{(props.pageNow+1)*5 < props.activitiesCount && <button onClick={() => {props.loadActivities(props.pageNow+1); setLoading(true);}}>{'>'}</button>}</div>
                                 </div>
                             </div>
                         }
