@@ -116,14 +116,18 @@
         flex-direction: row;
         justify-content: space-between;
         color: var(--blue-color);
+        position: relative;
     }
 
     #history-item-info-name {
+        position: absolute;
+        right: 0px;
+        top: 35px;
         display: flex;
         font-size: large;
-        width: 45%;
-        justify-content: center;
+        justify-content: right;
         color: var(--orange-color);
+        width: auto;
     }
     
     #history-item-info-description {
@@ -136,7 +140,13 @@
     
     #history-item-info-duration {
         display: flex;
-        font-size: x-large;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        text-align: right;
+        width: auto;
+        right: 0px;
+        top: -5px;
     }
 
     .history-edit {
