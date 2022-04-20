@@ -12,7 +12,7 @@ function Register(props) {
     const [ formEmail, setFormEmail ] = useState('');
     const [ formPassword, setFormPassword] = useState('');
     const [ formPasswordConfirm, setFormPasswordConfirm ] = useState('');
-    const [ formGender, setFormGender ] = useState('');
+    const [ formGender, setFormGender ] = useState('male');
     const [ formWeight, setFormWeight ] = useState('');
     const [ formHeight, setFormHeight ] = useState('');
     const [ formDateOfBirth, setFormDateOfBirth ] = useState('');
