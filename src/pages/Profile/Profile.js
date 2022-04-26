@@ -139,6 +139,8 @@ function Profile(props) {
                     (
                         <div className='profile-welcome'>
                             Welcome to Tenrun!
+                            <div className='profile-welcome-detail-header'>Update [20220426]: Add password hashing</div>
+                            <div className='profile-welcome-detail'>All storing password from the past in the system was hashed and any new user's password will be hashed for more security.</div>
                         </div>
                     )
                 }

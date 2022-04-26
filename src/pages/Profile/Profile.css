@@ -51,6 +51,19 @@
     font-weight: bold;
 }
 
+.profile-welcome-detail-header {
+    margin-top: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.profile-welcome-detail {
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+}
+
 .highlight {
     font-weight: bold;
     color: red;
